@@ -62,9 +62,6 @@ nextbuttonElement.addEventListener('click', ()=>{
 })
 updateCalender();
 
-
-
-
 // Initialize data from localStorage or defaults
 let monthlyBudget = parseFloat(localStorage.getItem('monthlyBudget')) || 2000;
 let budgetDays = parseFloat(localStorage.getItem('budgetDays')) || 30;

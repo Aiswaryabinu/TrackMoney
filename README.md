@@ -17,7 +17,6 @@ A beautiful, interactive expense tracking application that helps you manage your
 - 🎨 **Beautiful UI** - Modern glassmorphism design with purple gradient theme
 
 ## File Structure
-
 ```
 TrackMoney/
 ├── page1.html          # Main HTML file

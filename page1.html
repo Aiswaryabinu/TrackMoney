@@ -3,18 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <title>ExpenseTracker</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style/page1.css">
 </head>
 <body>
-<<<<<<< HEAD
   <h1>Expense Tracker</h1>
-
- <div class="calander">
-   <div class="header">
-    <button id="prevbutton" ></button>
-   <div class="monthyear" id="monthyear">
-   </div>
-   <button id="nextyear"></button>  
-   </div>
+  <p> Track your daily spending and stay within budget!</p>
+  <div class="calendar">
+    <div class="header">
+       <button id="prevbutton" >
+         <i class="fa-solid fa-chevron-left"></i>
+       </button>
+       <div class="monthyear" id="monthyear"></div>
+       <button id="nextbutton">
+        <i class="fa-solid fa-chevron-right"></i>
+       </button>  
+    </div>
 
    <div class="Days">
      <div class="day">S</div>
@@ -25,7 +29,125 @@
      <div class="day">F</div>
      <div class="day">S</div>
    </div>
-   <div class="date" id="date"></div>
+   <div class="dates" id="date"></div>
  </div>
+
+<!-- Budget Info Section -->
+<div class="budget-info">
+  <div class="budget-row">
+    <span>Monthly Budget</span>
+    <span id="monthlyBudget">Rs 2000.00</span>
+  </div>
+  <div class="budget-row">
+    <span>Daily Budget</span>
+    <span id="dailyBudget">Rs 66.67</span>
+  </div>
+  <div class="progress-bar">
+    <div class="progress-fill" id="progressBar"></div>
+  </div>
+  <div class="spent-info">
+    <span>Spent: Rs <span id="spentAmount">0.00</span></span>
+    <span id="percentSpent">0.0%</span>
+  </div>
+</div>
+
+<!-- Daily Budget Tracker -->
+<div class="daily-tracker">
+  <h3>Today's Budget</h3>
+  <div class="daily-stats">
+    <div class="stat-item">
+      <span class="stat-label">Daily Budget</span>
+      <span class="stat-value" id="todayBudget">Rs 66.67</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-label">Today's Spent</span>
+      <span class="stat-value today-spent" id="todaySpent">Rs 0.00</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-label">Remaining</span>
+      <span class="stat-value remaining" id="todayRemaining">Rs 66.67</span>
+    </div>
+  </div>
+  <div class="daily-progress-bar">
+    <div class="daily-progress-fill" id="dailyProgressFill"></div>
+  </div>
+</div>
+
+<!-- Warning Message -->
+<div id="warningMessage" class="warning-message hidden">
+  <i class="fa-solid fa-exclamation-triangle"></i>
+  <span id="warningText"></span>
+</div>
+
+<!-- Balance and Savings Section -->
+<div class="balance-section">
+  <div class="balance-card">
+    <h3>Current Balance</h3>
+    <p class="balance-amount" id="currentBalance">Rs 2000.00</p>
+  </div>
+  <div class="balance-card">
+    <h3>Savings</h3>
+    <p class="balance-amount savings" id="savings">Rs 5000.00</p>
+  </div>
+</div>
+
+<div class="btn-group">
+  <button onclick="toggleForm('budgetForm')">Set Budget</button>
+  <button onclick="toggleForm('expenseForm')">Add Expense</button>
+</div>
+
+<div id="budgetForm" class="form-card hidden">
+  <h3>Set Monthly Budget</h3>
+  <label>Monthly Budget (Rs)</label>
+  <input type="number" id="bAmount" placeholder="2000">
+  <label>Number of Days</label>
+  <input type="number" id="bDays" placeholder="30" min="1">
+  <small style="color: rgba(255,255,255,0.7); display: block; margin-top: -5px; margin-bottom: 10px;">Daily budget will be calculated as: Total Budget ÷ Days</small>
+  <div class="row">
+    <button onclick="toggleForm('budgetForm')">Cancel</button>
+    <button class="pink-btn" onclick="saveBudget()">Set Budget</button>
+  </div>
+</div>
+
+<div id="expenseForm" class="form-card hidden">
+  <h3>Add Expense</h3>
+  <label>Amount (Rs)</label>
+  <input type="number" id="eAmount" placeholder="0.00">
+  <label>Category</label>
+  <select id="eCategory">
+    <option value="">Select category</option>
+    <option value="Food">Food</option>
+    <option value="Transportation">Transportation</option>
+    <option value="Shopping">Shopping</option>
+    <option value="Entertainment">Entertainment</option>
+    <option value="Bills">Bills</option>
+    <option value="Healthcare">Healthcare</option>
+    <option value="Other">Other</option>
+  </select>
+  <label>Date</label>
+  <input type="date" id="eDate">
+  <label>Description (optional)</label>
+  <input type="text" id="eDesc" placeholder="e.g., lunch at cafe">
+  <div class="row">
+    <button onclick="toggleForm('expenseForm')">Cancel</button>
+    <button class="pink-btn" onclick="saveExpense()">Add Expense</button>
+  </div>
+</div>
+
+<!-- Expense List Modal -->
+<div id="expenseListModal" class="form-card hidden">
+  <div class="modal-header">
+    <h3 id="expenseListTitle">Expenses</h3>
+    <button class="close-btn" onclick="toggleForm('expenseListModal')">
+      <i class="fa-solid fa-times"></i>
+    </button>
+  </div>
+  <div id="expenseList" class="expense-list"></div>
+  <div class="expense-total">
+    <strong>Total: Rs <span id="dayTotal">0.00</span></strong>
+  </div>
+</div>
+
+  <script src="page1.js"></script>
 </body>
 </html>
